@@ -39,11 +39,19 @@ class VirtualMachine
   def options_for(category, group)
     category = product_categories.select { |x| x.category_code == category }.first
     group = category.groups.select { |x| x.title == group }.first
-    group.prices.map { |x| [x.item.description, x.item.id] }.uniq
+    group.prices.map { |x| 
+      ["#{x.item.description} - [$#{x.recurring_fee}]", x.id, {
+        "data-location-group-id": x.location_group_id, "data-hourly": x.hourly_recurring_fee,
+        "data-monthly": x.recurring_fee,
+        "data-item-description": x.item.description
+      }] 
+    }
   end
 
   def options_for_datacenter
-    datacenters.map { |x| [x.long_name, x.name] }
+    datacenters.map { |x| 
+      [x.long_name, x.id, { "data-item-description": x.long_name }] 
+    }
   end
 
   def form_options_for(category)
@@ -51,7 +59,13 @@ class VirtualMachine
     return options_for(category, nil) if groups_for(category)[0] == nil
     product_categories.select { |x| x.category_code == category }.each do |category|
       category.groups.each do |group|
-        options = group.prices.map { |x| [x.item.description, x.item.id] }.uniq
+        options = group.prices.map { |x| 
+          ["#{x.item.description} - [$#{x.recurring_fee.to_f}]", x.id, {
+            "data-location-group-id": x.location_group_id, "data-hourly": x.hourly_recurring_fee,
+            "data-monthly": x.recurring_fee,
+            "data-item-description": x.item.description
+          }] 
+        }
         array << [group.title, options]
       end
     end

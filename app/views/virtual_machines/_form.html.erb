@@ -8,7 +8,7 @@
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     </div>
     <div class="panel-body">
-      <%= f.input :datacenter, label: "Data Center", collection: @form.model.options_for_datacenter, include_blank: false %>
+      <%= f.input :datacenter, label: "Data Center", collection: @form.model.options_for_datacenter, include_blank: false, input_html: { 'data-resource' => 'datacenter'}  %>
     </div>
   </div>
   <div class="panel panel-default">
@@ -17,14 +17,14 @@
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     </div>
     <div class="panel-body">
-      <%= f.input :guest_core, label: 'Computing Instance', collection: @form.model.form_options_for('guest_core'), as: :grouped_select, group_method: :last %>
-      <%= f.input :ram, label: 'RAM', collection: @form.model.form_options_for('ram') %>
-      <%= f.input :os, label: 'Operating System', collection: @form.model.form_options_for('os'), as: :grouped_select, group_method: :last %>
-      <%= f.input :guest_disk0, label: 'First Disk', collection: @form.model.form_options_for('guest_disk0'), as: :grouped_select, group_method: :last %>
-      <%= f.input :guest_disk1, label: 'Second Disk', collection: @form.model.form_options_for('guest_disk1'), as: :grouped_select, group_method: :last %>
-      <%= f.input :guest_disk2, label: 'Third Disk', collection: @form.model.form_options_for('guest_disk2'), as: :grouped_select, group_method: :last %>
-      <%= f.input :guest_disk3, label: 'Fourth Disk', collection: @form.model.form_options_for('guest_disk3'), as: :grouped_select, group_method: :last %>
-      <%= f.input :guest_disk4, label: 'Fifth Disk', collection: @form.model.form_options_for('guest_disk4'), as: :grouped_select, group_method: :last %>
+      <%= f.input :ram, label: 'RAM', collection: @form.model.form_options_for('ram'), input_html: { 'data-resource' => 'ram'} %>
+      <%= f.input :guest_core, label: 'Computing Instance', collection: @form.model.form_options_for('guest_core'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_core'} %>
+      <%= f.input :os, label: 'Operating System', collection: @form.model.form_options_for('os'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'os'} %>
+      <%= f.input :guest_disk0, label: 'First Disk', collection: @form.model.form_options_for('guest_disk0'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_disk0'} %>
+      <%= f.input :guest_disk1, label: 'Second Disk', collection: @form.model.form_options_for('guest_disk1'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_disk1'} %>
+      <%= f.input :guest_disk2, label: 'Third Disk', collection: @form.model.form_options_for('guest_disk2'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_disk2'} %>
+      <%= f.input :guest_disk3, label: 'Fourth Disk', collection: @form.model.form_options_for('guest_disk3'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_disk3'} %>
+      <%= f.input :guest_disk4, label: 'Fifth Disk', collection: @form.model.form_options_for('guest_disk4'), as: :grouped_select, group_method: :last, input_html: { 'data-resource' => 'guest_disk4'} %>
     </div>
   </div>
   <div class="panel panel-default">
